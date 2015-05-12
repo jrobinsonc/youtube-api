@@ -1,0 +1,13 @@
+{
+    "name": "jrobinsonc/youtube-api",
+    "description": "PHP wrapper for the Youtube Data API (v3)",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jose Robinson",
+            "email": "jr@joserobinson.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
