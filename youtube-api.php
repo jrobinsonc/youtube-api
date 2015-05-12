@@ -11,7 +11,7 @@ namespace jrobinsonc;
 class Youtube_API {
 
     /**
-     * API Key.
+     * API key.
      * 
      * @see https://code.google.com/apis/console
      * @var string
@@ -43,9 +43,8 @@ class Youtube_API {
     {
         $params['key'] = $this->key;
         $params['part'] = $part;
-        $params_query = http_build_query($params);
 
-        $result = file_get_contents($this->apiUrl . $method . '?' . $params_query);
+        $result = file_get_contents($this->apiUrl . $method . '?' . http_build_query($params));
 
         if (false === $result)
             return false;
@@ -75,5 +74,40 @@ class Youtube_API {
             return false;
 
         return $result['items'][0]['contentDetails']['relatedPlaylists'];
+    }
+
+    /**
+     * @todo
+     */
+    public function getVideoThumb($videoId)
+    {
+    }
+
+    /**
+     * @todo
+     */
+    public function getVideoThumbnails($videoId)
+    {
+    }
+
+    /**
+     * @todo Need documentation.
+     */
+    function parseVideoURL($videoUrl)
+    {
+        if (preg_match('/youtube\.com\/watch\?v=([^\&\?\/]+)/', $videoUrl, $match))
+            $videoId = $match[1];
+        else if (preg_match('/youtube\.com\/embed\/([^\&\?\/]+)/', $videoUrl, $match))
+            $videoId = $match[1];
+        else if (preg_match('/youtube\.com\/v\/([^\&\?\/]+)/', $videoUrl, $match))
+            $videoId = $match[1];
+        else if (preg_match('/youtu\.be\/([^\&\?\/]+)/', $videoUrl, $match))
+            $videoId = $match[1];
+        else if (preg_match('/youtube\.com\/verify_age\?next_url=\/watch%3Fv%3D([^\&\?\/]+)/', $videoUrl, $match))
+            $videoId = $match[1];
+        else
+            $videoId = false;
+        
+        return $videoId;
     }
 }

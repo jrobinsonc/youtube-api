@@ -5,9 +5,14 @@
     "authors": [
         {
             "name": "Jose Robinson",
-            "email": "jr@joserobinson.com"
+            "email": "jr@joserobinson.com",
+            "homepage": "http://joserobinson.com/",
+            "role": "Developer"
         }
     ],
+    "support": {
+        "issues": "https://github.com/jrobinsonc/youtube-api/issues"
+    },
     "minimum-stability": "stable",
     "require": {}
 }
